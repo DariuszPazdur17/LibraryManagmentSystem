@@ -38,7 +38,9 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# It is a project for my Bachelor of Engineering 
 
+It is still in producting but some main functionalities are working. For project I used FireBase database to store all data.
 ## How it works?
 ### Description 
 The author of the project presents a solution to improve the operations of the B5 departmental library. The idea of the project is presented, as well as the inspiration the author drew from when creating the project. The project presents an analysis of student needs and draws conclusions on how we can improve the lives of students and university staff. The project is a web application, which is a library system built in React language, additionally connected to FireBase database, which contains records of books in the library. The solutions used in the project were given and the most important functions of the application's operation were presented, such as:
