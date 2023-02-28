@@ -55,7 +55,7 @@ Finally, the author's conclusions were presented, ideas for others that came up 
 ### Functionality
 
 #### Login
-<img src="img/login-panel.png"/>
+![Alt text](img/login-panel.PNG?raw=true "Login-Panel")
 
 
 ## Learn More
