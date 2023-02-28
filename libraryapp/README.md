@@ -39,6 +39,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## How it works?
+### Descreption 
+The author of the project presents a solution to improve the operations of the B5 departmental library. The idea of the project is presented, as well as the inspiration the author drew from when creating the project. The project presents an analysis of student needs and draws conclusions on how we can improve the lives of students and university staff. The project is a web application, which is a library system built in React language, additionally connected to FireBase database, which contains records of books in the library. The solutions used in the project were given and the most important functions of the application's operation were presented, such as:
+- Logging
+- Registration
+- Adding and deleting books
+- Prolonging records
+- Adding items to favorites
+- Borrowing
+- Searching for items
+In the following part of the work the functionality was discussed based on screenshots of the application's code, finally tests were carried out on different browsers in order to ensure the best possible user experience of the application.
+Finally, the author's conclusions were presented, ideas for others that came up during the development of the project. Also summarized was the knowledge gained during the study at the university, which was necessary to create the application. 
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
