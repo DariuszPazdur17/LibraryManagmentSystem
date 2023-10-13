@@ -2,31 +2,35 @@ import { Typography, Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Userappbar from "../navbar/user";
-import fire from "../../files/firebase";
+import {fire} from "../../files/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { getBookData } from "../reducers/book";
+import useCollection from "../../useCollection";
 export const Viewbook = () => {
-  const [bookdata, setdata] = useState([]);
+  // const [bookdata, setdata] = useState([]);
   const user = useSelector(state => state.user.value);
   const navigate = useNavigate();
   const search = useSelector(state => state.search.value);
   const dispatch = useDispatch();
-  useEffect(() => {
-    fire.firestore().collection("books").get().then(snapshot =>
-      snapshot.forEach(ele => {
-        var data = ele.data();
-        setdata(arr => [...arr, data]);
-        console.log(data);
-      })
-    );
-  }, []);
+  
+  const {documents: bookdata} = useCollection("book-request")
+
+  // useEffect(() => {
+  //   fire.firestore().collection("books").get().then(snapshot =>
+  //     snapshot.forEach(ele => {
+  //       var data = ele.data();
+  //       setdata(arr => [...arr, data]);
+  //       console.log(data);
+  //     })
+  //   );
+  // }, []);
 
   return (
     <Box sx={{ background: "#3FA34D66", position: "relative" }}>
       <Userappbar />
-      {search.searchtext == ""
-        ? bookdata.map((data, index) => {
+      {search.searchtext === ""
+        ? bookdata?.map((data, index) => {
             return (
               <Stack
                 sx={{
@@ -112,7 +116,7 @@ export const Viewbook = () => {
             );
           })
         : bookdata
-            .filter(val => {
+            ?.filter(val => {
               if (
                 val.title
                   .toLowerCase()

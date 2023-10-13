@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Typography, Button, TextField } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { useNavigate } from "react-router-dom";
-import fire from "../../files/firebase";
+import {fire} from "../../files/firebase";
 import { useSelector } from "react-redux";
 import Userappbar from "../navbar/user";
 

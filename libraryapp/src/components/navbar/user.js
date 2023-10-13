@@ -3,7 +3,7 @@ import { Box, Stack } from "@mui/system";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import fire from "../../files/firebase";
+import {fire} from "../../files/firebase";
 import Logo from "../../images/logo.png";
 import { getSearchData } from "../reducers/search";
 
@@ -139,7 +139,7 @@ const Userappbar = () => {
         <Button
           variant="contained"
           onClick={() => {
-            if (searchtext == "") {
+            if (searchtext ==="") {
               alert("please enter search text");
               dispatch(
                 getSearchData({

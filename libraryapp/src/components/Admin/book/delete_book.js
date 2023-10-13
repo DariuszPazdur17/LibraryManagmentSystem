@@ -1,7 +1,7 @@
 import { Typography, Button } from "@mui/material";
 import { Box, Container, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import fire from "../../../files/firebase";
+import {fire} from "../../../files/firebase";
 import Adminappbar from "../../navbar/admin";
 
 export const Deletebook = () => {
@@ -19,8 +19,8 @@ export const Deletebook = () => {
   return (
     <Box sx={{ background: "#3FA34D66", position: "relative" }}>
       <Adminappbar />
-      {bookdata != ""
-        ? bookdata.map((data, index) => {
+      {bookdata !== ""
+        ? bookdata?.map((data, index) => {
             return (
               <Stack
                 sx={{

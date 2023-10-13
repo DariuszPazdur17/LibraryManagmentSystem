@@ -1,18 +1,31 @@
-import firebase from "firebase/compat/app";
+
+import { initializeApp } from "firebase/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import { getAuth } from "firebase/auth";
+import { getDocs, getFirestore } from "firebase/firestore";
+import { collection } from "firebase/firestore";
 
-var firebaseConfig = {
-  apiKey: "AIzaSyAQaJGnXaL6GLwfubQ-Qz52vM7LQ1n9fmg",
-  authDomain: "library-managment-5e555.firebaseapp.com",
-  databaseURL: "https://library-managment-5e555-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "library-managment-5e555",
-  storageBucket: "library-managment-5e555.appspot.com",
-  messagingSenderId: "615834683613",
-  appId: "1:615834683613:web:3c4e87db78fa412e3ef334",
-  measurementId: "G-0JDVKN7EHH"
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATA_BASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSEGINID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
 // Initialize Firebase
-var fire = firebase.initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
-export default fire;
+//  Initialize Services
+const fire = getFirestore();
+
+// Collection ref
+
+
+
+const auth = getAuth();
+export {fire, auth};

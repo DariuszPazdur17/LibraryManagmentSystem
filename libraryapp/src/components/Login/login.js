@@ -3,49 +3,26 @@ import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import fire from "../../files/firebase";
+import {fire, auth} from "../../files/firebase";
 import HomeappBar from "../navbar/Home";
 import { getUserData } from "../reducers/user";
+import { addDoc, collection } from "firebase/firestore";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = () => {
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSubmit = () => {
     if (email === "" || password === "") {
       alert("please enter email and password");
     } else {
-      fire
-        .firestore()
-        .collection("users")
-        .where("email", "==", email)
-        .where("password", "==", password)
-        .get()
-        .then(snapshot => {
-          if (snapshot.docs.length == 0) {
-            alert("user not found");
-          } else {
-            snapshot.forEach(ele => {
-              var data = ele.data();
-              console.log(data);
-
-              dispatch(
-                getUserData({
-                  email: data.email,
-                  password: data.password,
-                  indexnumber: data.indexnumber
-                })
-              );
-              navigate("/userpage");
-            });
-          }
-        })
-        .catch(err => {
-          alert(err);
-        });
-    }
+      signInWithEmailAndPassword(auth, email, password)
+        .then((res) =>{
+          navigate("/userpage");
+        } 
+    )}
   };
   return (
     <Box sx={{ backgroundColor: "#3FA34D6B", height: "100vh" }}>

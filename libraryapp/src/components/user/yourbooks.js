@@ -2,32 +2,36 @@ import { Typography, Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Userappbar from "../navbar/user";
-import fire from "../../files/firebase";
+import {fire} from "../../files/firebase";
 import { useSelector } from "react-redux";
+import useCollection from "../../useCollection";
 export const Yourbooks = () => {
-  const [bookdata, setdata] = useState([]);
+  // const [bookdata, setdata] = useState([]);
   const user = useSelector(state => state.user.value);
-  useEffect(() => {
-    fire
-      .firestore()
-      .collection("book-requests")
-      .where("email", "==", user.email)
-      .get()
-      .then(snapshot =>
-        snapshot.forEach(ele => {
-          var data = ele.data();
-          setdata(arr => [...arr, data]);
-          console.log(data);
-        })
-      );
-  }, []);
+
+
+  const {documents: bookdata} = useCollection("book-request")
+  // useEffect(() => {
+  //   fire
+  //     .firestore()
+  //     .collection("book-requests")
+  //     .where("email", "==", user.email)
+  //     .get()
+  //     .then(snapshot =>
+  //       snapshot.forEach(ele => {
+  //         var data = ele.data();
+  //         setdata(arr => [...arr, data]);
+  //         console.log(data);
+  //       })
+  //     );
+  // }, []);
 
   return (
     <Box sx={{ background: "#3FA34D66", position: "relative" }}>
       <Userappbar />
       <Box sx={{ height: "100vh" }}>
-        {bookdata != ""
-          ? bookdata.map((data, index) => {
+        {bookdata !== ""
+          ? bookdata?.map((data, index) => {
               return (
                 <Stack
                   sx={{
@@ -51,8 +55,8 @@ export const Yourbooks = () => {
                     src={data.imageurl}
                   />
                   <Box sx={{ width: "50%" }}>
-                    {data.bookstatus == "extended" ||
-                    data.requeststatus == "pending"
+                    {data.bookstatus === "extended" ||
+                    data.requeststatus === "pending"
                       ? ""
                       : <Button
                           variant="contained"

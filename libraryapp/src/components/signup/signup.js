@@ -2,8 +2,11 @@ import { Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fire from "../../files/firebase";
+import {fire, auth } from "../../files/firebase";
 import HomeappBar from "../navbar/Home";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc, collection } from "firebase/firestore";
+
 
 const Signup = () => {
   const [email, setemail] = useState("");
@@ -21,22 +24,19 @@ const Signup = () => {
       indexnumber === ""
     ) {
       alert("please fill all details");
-    } else if (password != confirmpassword) {
+    } else if (password !== confirmpassword) {
       alert("password not matched !");
     } else {
-      fire.auth().createUserWithEmailAndPassword(email, password).then(() => {
-        fire
-          .firestore()
-          .collection("users")
-          .add({
+      createUserWithEmailAndPassword(auth,email,password).then(() => {
+        const collect = collection(fire,"users")
+        addDoc(
+          collect,{
             email: email,
             password: password,
             indexnumber: indexnumber
-          })
-          .then(() => {
+        })
             alert("Account created successfully");
             navigate("/login");
-          });
       });
     }
   };

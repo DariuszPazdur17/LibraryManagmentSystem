@@ -2,37 +2,42 @@ import { Typography, Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
 import Userappbar from "../navbar/user";
-import fire from "../../files/firebase";
+import {fire} from "../../files/firebase";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Adminappbar from "../navbar/admin";
+import useCollection from "../../useCollection";
 export const Viewrequests = () => {
-  const [bookdata, setdata] = useState([]);
+  // const [bookdata, setdata] = useState([]);
   const user = useSelector(state => state.user.value);
   const navigate = useNavigate();
-  useEffect(() => {
-    fire
-      .firestore()
-      .collection("book-requests")
-      .where("requeststatus", "==", "pending")
-      .get()
-      .then(snapshot =>
-        snapshot.forEach(ele => {
-          console.log(ele);
-          var data = { id: ele.id, data: ele.data() };
-          setdata(arr => [...arr, data]);
-          console.log(data);
-        })
-      );
-  }, []);
+
+  const {documents: bookdata} = useCollection("book-request",["requeststatus", "==", "pending"] )
+
+
+  // useEffect(() => {
+  //   fire
+  //     .firestore()
+  //     .collection("book-requests")
+  //     .where("requeststatus", "==", "pending")
+  //     .get()
+  //     .then(snapshot =>
+  //       snapshot.forEach(ele => {
+  //         console.log(ele);
+  //         var data = { id: ele.id, data: ele.data() };
+  //         setdata(arr => [...arr, data]);
+  //         console.log(data);
+  //       })
+  //     );
+  // }, []);
 
   return (
     <Box
       sx={{ background: "#3FA34D66", position: "relative", height: "100vh" }}
     >
       <Adminappbar />
-      {bookdata != ""
-        ? bookdata.map((data, index) => {
+      {bookdata !== ""
+        ? bookdata?.map((data, index) => {
             return (
               <Stack
                 sx={{

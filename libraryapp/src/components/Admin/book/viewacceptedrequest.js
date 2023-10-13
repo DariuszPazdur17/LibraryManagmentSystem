@@ -1,36 +1,40 @@
 import { Typography, Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
-import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import fire from "../../../files/firebase";
+// import React, { useState, useEffect } from "react";
+// import { useSelector } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+import {fire} from "../../../files/firebase";
 import Adminappbar from "../../navbar/admin";
+import useCollection from "../../../useCollection";
 export const Viewacceptedrequests = () => {
-  const [bookdata, setdata] = useState([]);
-  const user = useSelector(state => state.user.value);
-  const navigate = useNavigate();
-  useEffect(() => {
-    fire
-      .firestore()
-      .collection("book-requests")
-      .where("requeststatus", "==", "accepted")
-      .get()
-      .then(snapshot =>
-        snapshot.forEach(ele => {
-          var data = { id: ele.id, data: ele.data() };
-          setdata(arr => [...arr, data]);
-          console.log(data);
-        })
-      );
-  }, []);
+  // const [bookdata, setdata] = useState([]);
+  // const user = useSelector(state => state.user.value);
+  // const navigate = useNavigate();
+
+  const {documents: bookdata} = useCollection("book-request")
+
+  // useEffect(() => {
+  //   fire
+  //     .firestore()
+  //     .collection("book-requests")
+  //     .where("requeststatus", "==", "accepted")
+  //     .get()
+  //     .then(snapshot =>
+  //       snapshot.forEach(ele => {
+  //         var data = { id: ele.id, data: ele.data() };
+  //         setdata(arr => [...arr, data]);
+  //         console.log(data);
+  //       })
+  //     );
+  // }, []);
 
   return (
     <Box
       sx={{ background: "#3FA34D66", position: "relative", height: "100vh" }}
     >
       <Adminappbar />
-      {bookdata != ""
-        ? bookdata.map((data, index) => {
+      {bookdata !== ""
+        ? bookdata?.map((data, index) => {
             return (
               <Stack
                 sx={{

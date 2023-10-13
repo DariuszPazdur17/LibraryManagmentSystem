@@ -2,8 +2,10 @@ import { Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import fire from "../../../files/firebase";
+import {fire} from "../../../files/firebase";
 import Adminappbar from "../../navbar/admin";
+import { collection, addDoc } from "firebase/firestore";
+// import { Navigate, useNavigate } from "react-router-dom";
 
 const Addbook = () => {
   const [bookid, setbookid] = useState("");
@@ -13,6 +15,9 @@ const Addbook = () => {
   const [description, setdescription] = useState("");
 
   const navigate = useNavigate();
+
+  const colRef = collection(fire, "books")
+  // const navigate = useNavigate();
   const handleSubmit = e => {
     e.preventDefault();
     if (
@@ -22,21 +27,31 @@ const Addbook = () => {
       author === "" ||
       description === ""
     ) {
-      alert("please enter email and password");
+      alert("Please enter a book details");
     } else {
-      fire
-        .firestore()
-        .collection("books")
-        .add({
-          id: bookid,
-          imageurl: imageurl,
+        addDoc(colRef, {
+          bookid: bookid,
+          imageurl:imageurl,
           title: title,
           author: author,
           description: description
         })
         .then(() => {
-          navigate("/deletebook");
-        });
+          navigate("viewbooks")
+        })
+      // fire
+      //   .firestore()
+      //   .collection("books")
+      //   .add({
+      //     id: bookid,
+      //     imageurl: imageurl,
+      //     title: title,
+      //     author: author,
+      //     description: description
+      //   })
+      //   .then(() => {
+      //     navigate("/deletebook");
+      //   });
     }
   };
   return (

@@ -1,7 +1,7 @@
 import { Typography, Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import React, { useState, useEffect } from "react";
-import fire from "../../../files/firebase";
+import {fire} from "../../../files/firebase";
 import Adminappbar from "../../navbar/admin";
 
 export const Deleteuser = () => {
