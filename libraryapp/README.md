@@ -1,6 +1,14 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Install my-project with npm
+
+```bash
+npx create-react-app my-app
+cd my-app
+npm start
+```
+
 
 ## Available Scripts
 
@@ -41,8 +49,33 @@ You don't have to ever use `eject`. The curated feature set is suitable for smal
 # It is a project for my Bachelor of Engineering 
 
 It is still in producting but some main functionalities are working. For project I used FireBase database to store all data.
-## How it works?
-### Description 
+
+### CRUD Application with Firebase Integration
+
+This CRUD (Create, Read, Update, Delete) application is connected to
+Firebase, allowing seamless data operations while persisting changes in
+the database.
+
+### Getting Started
+
+Before you begin, ensure you have the necessary Firebase credentials and
+configurations for your project.
+
+#### Prerequisites
+
+1.  **Firebase Account:** Create a Firebase account and set up your
+    project using the [Firebase
+    Console](https://console.firebase.google.com/).
+
+2.  **Firebase Configuration:** Obtain your Firebase configuration
+    object (apiKey, authDomain, projectId, storageBucket,
+    messagingSenderId, and appId) from your Firebase project settings.
+
+3.  **Node.js and npm:** Install Node.js and npm from
+    [nodejs.org](https://nodejs.org/) if you haven't already.
+
+### Description
+
 The author of the project presents a solution to improve the operations of the B5 departmental library. The idea of the project is presented, as well as the inspiration the author drew from when creating the project. The project presents an analysis of student needs and draws conclusions on how we can improve the lives of students and university staff. The project is a web application, which is a library system built in React language, additionally connected to FireBase database, which contains records of books in the library. The solutions used in the project were given and the most important functions of the application's operation were presented, such as:
 - Logging
 - Registration
@@ -53,8 +86,75 @@ The author of the project presents a solution to improve the operations of the B
 - Searching for items
 In the following part of the work the functionality was discussed based on screenshots of the application's code, finally tests were carried out on different browsers in order to ensure the best possible user experience of the application.
 Finally, the author's conclusions were presented, ideas for others that came up during the development of the project. Also summarized was the knowledge gained during the study at the university, which was necessary to create the application. 
+### Usage
 
-### Functionality
+1.  **Clone the Repository:**
+
+    ``` bash
+    git clone https://github.com/yourusername/your-repo.git
+    ```
+
+2.  **Configure Firebase:**
+
+    Replace the Firebase configuration in `firebase.js` with your own
+    credentials:
+
+    ``` javascript
+    const firebaseConfig = {
+      apiKey: 'YOUR_API_KEY',
+      authDomain: 'YOUR_AUTH_DOMAIN',
+      projectId: 'YOUR_PROJECT_ID',
+      storageBucket: 'YOUR_STORAGE_BUCKET',
+      messagingSenderId: 'YOUR_MESSAGING_SENDER_ID',
+      appId: 'YOUR_APP_ID',
+    };
+    ```
+
+3.  **Install Dependencies:**
+
+    ``` bash
+    npm install
+    ```
+
+4.  **Run the Application:**
+
+    ``` bash
+    npm start
+    ```
+
+### Features
+
+-   **Create:** Add new records to the database.
+-   **Read:** Retrieve and display existing records.
+-   **Update:** Modify and update records.
+-   **Delete:** Remove records from the database.
+
+### Technologies Used
+
+-   **React:** JavaScript library for building user interfaces.
+-   **Firebase:** Cloud-based platform for web and mobile app
+    development.
+-   **Node.js:** JavaScript runtime for server-side development.
+-   **npm:** Package manager for Node.js.
+
+### Contributions
+
+Contributions, bug fixes, and new feature suggestions are welcome! Feel
+free to open issues and pull requests.
+
+### License
+
+This project is licensed under the MIT License. See the
+[LICENSE](LICENSE) file for details.
+
+### Contact
+
+If you have questions or need assistance, please don't hesitate to reach
+out.
+
+Happy coding! 🚀
+
+
 
 #### Login
 ![Alt text](img/login-panel.PNG?raw=true "Login-Panel")
